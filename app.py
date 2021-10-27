@@ -1,7 +1,7 @@
 from tabler import LR1
 from flask import Flask, render_template, request
 import os
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
