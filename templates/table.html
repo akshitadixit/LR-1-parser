@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+  {% if data[2]==0: %}
+    <div class="center" style="border: 3px solid red; width: fit-content;">
+    <p>Reject</p>
+    </div>
+  {% else: %}
+    <div class="center" style="border: 3px solid green;">
+    <p>Accept</p>
+    </div>
+  {% endif %}
+  
+        <table>
+            <thead>                 
+              <tr>
+                <th>Variables &rarr;<br/>States &darr;</th>
+               {%
+                for x in data[3]:
+              %}   
+                <th data-column={{x}} style="white-space: nowrap;">{{x}}</th>
+              {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {%
+                for x in data[0]:
+              %}
+              <tr>
+                <td>{{x}}</td>
+                {%
+                    for z in data[3]:
+                %}
+                {%
+                      if z not in data[0][x]:
+                  %}
+                  <td>-</td>
+                {% else %}
+                <td>{{data[0][x][z]}}</td>
+                {% endif %}
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Stack trace</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%
+                for x in data[1]:
+              %}
+              <tr>
+                <td>{{x}}</td>
+              {% endfor %}
+              </tr>                  
+            </tbody>
+          </table>
+      {% endblock %}

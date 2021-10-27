@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>LR(1) Parser</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <style>
+          .center {
+            height: fit-content;
+            width: fit-content;
+            text-align: center;
+          }
+          
+          .center p {
+            line-height:normal;
+            vertical-align: middle;
+          }
+          </style>
+    </head>
+    <body>
+      <p>Upload a .txt file with your grammar in the following format and then enter a sample string you want to check it against:<br/>
+        List of non-terminals<br/>List of non-terminals<br/>Production rules <br/><br/>
+        S' S A<br/>
+        a b<br/>
+        S' S<br/>
+        S A A<br/>
+        A a A<br/>
+        A a<br/><br/>
+        Note: S A A and all others are written in that format for the production S->AA <br/>
+      </p>
+      <form action='/input' enctype = "multipart/form-data" method="post">
+        <input type="file" name='grammar' accept=".txt">
+        <input type='text' name='string'>
+        <input type='submit' value="Submit">
+      </form>
+      {% block content %}
+      {% endblock %}
+    </body>
+</html>
